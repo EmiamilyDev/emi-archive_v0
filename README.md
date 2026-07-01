@@ -6,7 +6,7 @@ This project now includes a serverless endpoint for homepage stats:
 
 - Route: `/api/stats`
 - Method: `GET`
-- Runtime target: Vercel serverless function
+- Runtime target: Netlify Function (`/.netlify/functions/stats`) via redirect
 
 ### Response Shape
 
@@ -48,6 +48,13 @@ Fallback values are read from `data/stats-fallback.json`.
 	- `YOUTUBE_CHANNEL_ID`
 
 When provider calls fail or env vars are missing, the endpoint automatically falls back to `data/stats-fallback.json`.
+
+### Netlify Routing
+
+The repo includes `netlify.toml` with:
+
+- Redirect `/api/stats` -> `/.netlify/functions/stats`
+- Function source at `netlify/functions/stats.js`
 
 ## Homepage Integration
 
