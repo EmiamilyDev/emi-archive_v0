@@ -324,6 +324,7 @@ a {
   gap: 18px;
   flex-wrap: wrap;
   justify-content: center;
+  scroll-snap-type: x proximity;
 }
 
 .home-nav__link {
@@ -334,6 +335,7 @@ a {
   color: rgba(255, 247, 236, 0.8);
   padding-bottom: 8px;
   border-bottom: 1px solid transparent;
+  scroll-snap-align: start;
 }
 
 .home-nav__link.is-active,
@@ -349,6 +351,7 @@ a {
   color: rgba(255, 247, 236, 0.75);
   font-size: 0.72rem;
   letter-spacing: 0.14em;
+  user-select: none;
 }
 
 .home-hero__content {
@@ -504,7 +507,7 @@ a {
 
 .home-news-card h3 {
   margin: 0;
-  font-size: 1.06rem;
+  font-size: clamp(0.98rem, 2.2vw, 1.06rem);
   font-weight: 500;
   color: #27231e;
 }
@@ -687,7 +690,7 @@ a {
 }
 
 .home-socials a {
-  width: 34px;
+  width: 38px;
   aspect-ratio: 1;
   display: grid;
   place-items: center;
@@ -768,19 +771,80 @@ a {
   .home-topbar {
     align-items: flex-start;
     flex-direction: column;
+    gap: 14px;
+    padding-top: 16px;
   }
 
   .home-nav {
+    width: 100%;
+    flex-wrap: nowrap;
     justify-content: flex-start;
-    gap: 12px;
+    gap: 6px;
+    overflow-x: auto;
+    padding: 4px 0 10px;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+  }
+
+  .home-nav::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  .home-nav::-webkit-scrollbar-thumb {
+    background: rgba(219, 198, 164, 0.3);
+    border-radius: 999px;
+  }
+
+  .home-nav__link {
+    display: inline-flex;
+    align-items: center;
+    min-height: 40px;
+    padding: 0 10px;
+    border: 1px solid rgba(219, 198, 164, 0.24);
+    border-radius: 999px;
+    white-space: nowrap;
+    font-size: 0.66rem;
+    letter-spacing: 0.1em;
+    background: rgba(6, 6, 6, 0.24);
+  }
+
+  .home-nav__link.is-active,
+  .home-nav__link:hover,
+  .home-nav__link:focus-visible {
+    border-bottom-color: transparent;
+    border-color: rgba(219, 198, 164, 0.54);
+    background: rgba(219, 198, 164, 0.14);
+  }
+
+  .home-topbar__meta {
+    margin-top: -2px;
   }
 
   .home-hero {
-    min-height: 84vh;
+    min-height: 76vh;
+    background-position: 64% 20%;
+  }
+
+  .home-hero__content {
+    max-width: 40ch;
+    padding: 4vh 0 8vh;
   }
 
   .home-title {
     font-size: clamp(2.4rem, 18vw, 4.6rem);
+    line-height: 0.95;
+  }
+
+  .home-lead {
+    margin: 18px 0 24px;
+    font-size: 0.94rem;
+    line-height: 1.62;
+  }
+
+  .home-btn {
+    min-height: 44px;
+    padding: 10px 16px;
+    font-size: 0.64rem;
   }
 
   .home-about-card__body {
@@ -791,8 +855,51 @@ a {
     min-height: 240px;
   }
 
+  .home-highlights__head {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .home-news-card__meta {
+    gap: 8px;
+    flex-wrap: wrap;
+    line-height: 1.5;
+  }
+
+  .home-stats__row {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .home-stats article {
+    border-left: 0;
+    border-top: 1px solid rgba(214, 182, 139, 0.36);
+    padding-left: 0;
+    padding-top: 10px;
+  }
+
+  .home-stats__meta p {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    line-height: 1.8;
+    letter-spacing: 0.08em;
+  }
+
+  .home-stats__confidence-badge {
+    margin: -1px 2px;
+  }
+
+  .home-explore {
+    padding-top: 22px;
+  }
+
+  .home-tile {
+    min-height: 180px;
+  }
+
   .home-news-grid,
-  .home-stats__row,
   .home-explore-grid {
     grid-template-columns: 1fr;
   }
@@ -802,7 +909,56 @@ a {
     flex-direction: column;
   }
 
+  .home-socials a {
+    width: 42px;
+  }
+
   .home-subscribe {
     flex-direction: column;
+  }
+
+  .home-subscribe input,
+  .home-subscribe button {
+    min-height: 42px;
+  }
+}
+
+@media (max-width: 460px) {
+  .home-shell {
+    width: min(calc(100% - 20px), 1320px);
+  }
+
+  .home-brand {
+    font-size: 2.4rem;
+  }
+
+  .home-kicker {
+    letter-spacing: 0.14em;
+    font-size: 0.66rem;
+  }
+
+  .home-topbar__meta {
+    font-size: 0.64rem;
+    letter-spacing: 0.12em;
+  }
+
+  .home-title {
+    font-size: clamp(2rem, 16vw, 3.1rem);
+  }
+
+  .home-lead {
+    font-size: 0.9rem;
+  }
+
+  .home-section-title {
+    font-size: 0.95rem;
+  }
+
+  .home-stats__row {
+    grid-template-columns: 1fr;
+  }
+
+  .home-stats h3 {
+    font-size: 1.72rem;
   }
 }
