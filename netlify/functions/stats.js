@@ -4,6 +4,14 @@ const path = require("node:path");
 const CACHE_WINDOW_MS = 10 * 60 * 1000;
 const REQUEST_TIMEOUT_MS = 5000;
 const LIVE_METRIC_KEYS = ["instagramFollowers", "youtubeSubscribers"];
+const MANUAL_ENV_MAP = {
+  instagramFollowers: "MANUAL_INSTAGRAM_FOLLOWERS",
+  youtubeSubscribers: "MANUAL_YOUTUBE_SUBSCRIBERS",
+  actingProjects: "MANUAL_ACTING_PROJECTS",
+  musicReleases: "MANUAL_MUSIC_RELEASES",
+  awardsAndNominations: "MANUAL_AWARDS_AND_NOMINATIONS",
+  reachAndImpact: "MANUAL_REACH_AND_IMPACT",
+};
 
 let cache = {
   expiresAt: 0,
@@ -133,6 +141,37 @@ function mergeStats(baseStats, overrideStats) {
   };
 }
 
+function readManualOverrideStats() {
+  const overrides = {};
+  const providedKeys = [];
+
+  Object.keys(MANUAL_ENV_MAP).forEach(function (statKey) {
+    const envKey = MANUAL_ENV_MAP[statKey];
+    const rawValue = process.env[envKey];
+
+    if (typeof rawValue !== "string" || rawValue.trim() === "") {
+      return;
+    }
+
+    if (statKey === "reachAndImpact") {
+      overrides[statKey] = rawValue.trim();
+      providedKeys.push(statKey);
+      return;
+    }
+
+    const parsed = Number(rawValue);
+    if (Number.isFinite(parsed) && parsed >= 0) {
+      overrides[statKey] = Math.round(parsed);
+      providedKeys.push(statKey);
+    }
+  });
+
+  return {
+    overrides,
+    providedKeys,
+  };
+}
+
 async function readLiveProviderStats() {
   const providers = [];
   const live = {};
@@ -173,22 +212,35 @@ async function getStats() {
 
   const fallback = await readFallbackStats();
   const providerPayload = await readLiveProviderStats();
-  const mergedStats = mergeStats(fallback, providerPayload.live);
+  const manualPayload = readManualOverrideStats();
+  const liveMergedStats = mergeStats(fallback, providerPayload.live);
+  const mergedStats = mergeStats(liveMergedStats, manualPayload.overrides);
+
+  const providers = providerPayload.providers.slice();
+  if (manualPayload.providedKeys.length > 0) {
+    providers.push("manual-env");
+  }
+
   const payload = normalizePayload(
     mergedStats,
-    providerPayload.providers.length > 0 ? "live+fallback" : "fallback-json"
+    manualPayload.providedKeys.length > 0
+      ? "manual-env"
+      : providerPayload.providers.length > 0
+        ? "live+fallback"
+        : "fallback-json"
   );
-  const liveMetricsAvailable = LIVE_METRIC_KEYS.reduce(function (count, key) {
-    return key in providerPayload.live ? count + 1 : count;
+  const liveOrManualCoverage = LIVE_METRIC_KEYS.reduce(function (count, key) {
+    return key in providerPayload.live || key in manualPayload.overrides ? count + 1 : count;
   }, 0);
 
-  payload.providers = providerPayload.providers;
+  payload.providers = providers;
   payload.meta = providerPayload.meta;
+  payload.meta.manualOverrides = manualPayload.providedKeys;
   payload.liveCoverage = {
-    available: liveMetricsAvailable,
+    available: liveOrManualCoverage,
     total: LIVE_METRIC_KEYS.length,
   };
-  payload.confidenceScore = Math.round((liveMetricsAvailable / LIVE_METRIC_KEYS.length) * 100);
+  payload.confidenceScore = Math.round((liveOrManualCoverage / LIVE_METRIC_KEYS.length) * 100);
 
   cache = {
     payload,

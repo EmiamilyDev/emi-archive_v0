@@ -50,6 +50,23 @@ If that file is unavailable in serverless runtime, the Netlify function uses bui
 
 When provider calls fail or env vars are missing, the endpoint automatically falls back to `data/stats-fallback.json`.
 
+### Manual Override Via Environment Variables
+
+You can override stats manually (without editing files) by setting these environment variables in Netlify:
+
+- `MANUAL_INSTAGRAM_FOLLOWERS`
+- `MANUAL_YOUTUBE_SUBSCRIBERS`
+- `MANUAL_ACTING_PROJECTS`
+- `MANUAL_MUSIC_RELEASES`
+- `MANUAL_AWARDS_AND_NOMINATIONS`
+- `MANUAL_REACH_AND_IMPACT`
+
+Priority order is:
+
+1. Manual environment variables
+2. Live providers (Instagram Graph / YouTube API)
+3. Fallback JSON/defaults
+
 ### Netlify Routing
 
 The repo includes `netlify.toml` with:
