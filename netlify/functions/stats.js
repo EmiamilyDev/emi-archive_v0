@@ -10,10 +10,23 @@ let cache = {
   payload: null,
 };
 
+const DEFAULT_FALLBACK_STATS = {
+  instagramFollowers: 3000000,
+  youtubeSubscribers: 1200000,
+  actingProjects: 15,
+  musicReleases: 8,
+  awardsAndNominations: 10,
+  reachAndImpact: "Global",
+};
+
 async function readFallbackStats() {
   const fallbackPath = path.join(process.cwd(), "data", "stats-fallback.json");
-  const raw = await fs.readFile(fallbackPath, "utf8");
-  return JSON.parse(raw);
+  try {
+    const raw = await fs.readFile(fallbackPath, "utf8");
+    return JSON.parse(raw);
+  } catch (_error) {
+    return DEFAULT_FALLBACK_STATS;
+  }
 }
 
 async function fetchJson(url) {

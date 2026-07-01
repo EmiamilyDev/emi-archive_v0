@@ -35,6 +35,7 @@ This project now includes a serverless endpoint for homepage stats:
 ### Data Source
 
 Fallback values are read from `data/stats-fallback.json`.
+If that file is unavailable in serverless runtime, the Netlify function uses built-in fallback defaults.
 
 ### Optional Live Providers
 
