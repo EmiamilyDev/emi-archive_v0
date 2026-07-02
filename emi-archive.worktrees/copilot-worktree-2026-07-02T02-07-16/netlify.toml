@@ -1,0 +1,12 @@
+[build]
+  command = ""
+  publish = "."
+
+[functions]
+  included_files = ["data/**"]
+
+[[redirects]]
+  from = "/api/stats"
+  to = "/.netlify/functions/stats"
+  status = 200
+  force = true
