@@ -1679,7 +1679,7 @@ a {
 
   .archive-hero {
     position: relative;
-    min-height: 88svh;
+    min-height: 74svh;
     overflow: hidden;
     background: #111318;
   }
@@ -1698,7 +1698,7 @@ a {
   .archive-hero__content {
     position: relative;
     z-index: 2;
-    min-height: 88svh;
+    min-height: 74svh;
     align-content: center;
     gap: 14px;
     padding: 22px 20px 28px;
@@ -1711,7 +1711,7 @@ a {
 
   .archive-hero__title {
     color: #f4efe8;
-    font-size: clamp(3.1rem, 13.8vw, 4.9rem);
+    font-size: clamp(2.8rem, 12.4vw, 4.3rem);
     line-height: 0.88;
     max-width: 7ch;
   }
