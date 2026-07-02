@@ -1108,7 +1108,7 @@ a {
 
 .archive-hero {
   display: grid;
-  grid-template-columns: minmax(340px, 0.86fr) minmax(0, 1.14fr);
+  grid-template-columns: minmax(380px, 0.96fr) minmax(0, 1.04fr);
   min-height: clamp(640px, 72vh, 760px);
   background: linear-gradient(90deg, #f0ece4 0%, #f2eee7 56%, #f1ece3 100%);
 }
@@ -1121,9 +1121,9 @@ a {
 }
 
 .archive-hero__title {
-  font-size: clamp(3.1rem, 6.4vw, 5.5rem);
+  font-size: clamp(2.8rem, 5.5vw, 4.8rem);
   line-height: 0.94;
-  max-width: 8ch;
+  max-width: 7ch;
 }
 
 .archive-hero__lead {
