@@ -1551,6 +1551,108 @@ a {
   font-size: 0.53rem;
 }
 
+.archive-breakpoint-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.archive-breakpoint-cards article {
+  border: 1px solid #ddd3c5;
+  background: #fbf8f3;
+  padding: 9px;
+  display: grid;
+  gap: 7px;
+}
+
+.archive-breakpoint-kicker {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.52rem;
+  color: #746a5e;
+}
+
+.archive-breakpoint-title {
+  margin: 0;
+  font-family: "Playfair Display", Georgia, serif;
+  font-size: 1.08rem;
+  line-height: 1.18;
+  color: #27221d;
+}
+
+.archive-breakpoint-meta {
+  margin: 0;
+  font-size: 0.62rem;
+  color: #61584d;
+  line-height: 1.45;
+}
+
+.archive-device-row {
+  margin-top: 10px;
+  border-top: 1px solid #ddd3c6;
+  padding-top: 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.archive-device-row article {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 5px;
+}
+
+.archive-device-row h4 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.6rem;
+}
+
+.archive-device-row p {
+  margin: 0;
+  font-size: 0.58rem;
+  color: #645b50;
+}
+
+.archive-device-icon {
+  position: relative;
+  display: inline-block;
+  border: 2px solid #27231f;
+  border-radius: 2px;
+}
+
+.archive-device-icon.is-desktop {
+  width: 54px;
+  height: 36px;
+}
+
+.archive-device-icon.is-desktop::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -8px;
+  width: 16px;
+  height: 3px;
+  background: #27231f;
+  transform: translateX(-50%);
+}
+
+.archive-device-icon.is-tablet {
+  width: 28px;
+  height: 44px;
+  border-radius: 4px;
+}
+
+.archive-device-icon.is-mobile {
+  width: 22px;
+  height: 38px;
+  border-radius: 5px;
+}
+
 .archive-footer {
   margin-top: 18px;
   border-top: 1px solid #d8d0c2;
@@ -1664,6 +1766,10 @@ a {
   .archive-pillar-grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .archive-breakpoint-cards {
+    grid-template-columns: 1fr 1fr;
+  }
 }
 
 @media (max-width: 900px) {
@@ -1744,6 +1850,11 @@ a {
   .archive-pillar-grid,
   .archive-rail-split {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .archive-breakpoint-cards,
+  .archive-device-row {
+    grid-template-columns: 1fr;
   }
 
   .archive-hero__image {
