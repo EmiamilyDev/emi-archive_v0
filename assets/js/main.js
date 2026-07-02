@@ -10,16 +10,52 @@
   function initArchiveMobileMenu() {
     var menuButton = document.querySelector(".archive-menu-btn");
     var menuNav = document.querySelector(".archive-nav");
+    var lastFocusedElement = null;
 
     if (!menuButton || !menuNav) {
       return;
+    }
+
+    function isMobileMenuMode() {
+      return window.innerWidth <= 900;
+    }
+
+    function syncMenuA11yState(isOpen) {
+      if (isMobileMenuMode()) {
+        menuNav.setAttribute("aria-hidden", isOpen ? "false" : "true");
+      } else {
+        menuNav.setAttribute("aria-hidden", "false");
+      }
+    }
+
+    function focusFirstMenuLink() {
+      var firstLink = menuNav.querySelector("a");
+
+      if (firstLink && typeof firstLink.focus === "function") {
+        firstLink.focus();
+      }
     }
 
     function setOpenState(isOpen) {
       menuNav.classList.toggle("is-open", isOpen);
       document.body.classList.toggle("menu-open", isOpen);
       menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+      syncMenuA11yState(isOpen);
+
+      if (isOpen) {
+        lastFocusedElement = document.activeElement;
+        focusFirstMenuLink();
+      } else if (
+        lastFocusedElement &&
+        typeof lastFocusedElement.focus === "function" &&
+        document.contains(lastFocusedElement)
+      ) {
+        lastFocusedElement.focus();
+        lastFocusedElement = null;
+      }
     }
+
+    syncMenuA11yState(false);
 
     menuButton.addEventListener("click", function () {
       setOpenState(!menuNav.classList.contains("is-open"));
@@ -33,9 +69,27 @@
       }
     });
 
+    document.addEventListener("click", function (event) {
+      var isOpen = menuNav.classList.contains("is-open");
+      var clickedInsideNav = menuNav.contains(event.target);
+      var clickedMenuButton = menuButton.contains(event.target);
+
+      if (isMobileMenuMode() && isOpen && !clickedInsideNav && !clickedMenuButton) {
+        setOpenState(false);
+      }
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape" && menuNav.classList.contains("is-open")) {
+        setOpenState(false);
+      }
+    });
+
     window.addEventListener("resize", function () {
       if (window.innerWidth > 900 && menuNav.classList.contains("is-open")) {
         setOpenState(false);
+      } else {
+        syncMenuA11yState(menuNav.classList.contains("is-open"));
       }
     });
   }
