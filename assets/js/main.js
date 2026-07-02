@@ -7,6 +7,41 @@
     yearNodes[i].textContent = year;
   }
 
+  function initArchiveMobileMenu() {
+    var menuButton = document.querySelector(".archive-menu-btn");
+    var menuNav = document.querySelector(".archive-nav");
+
+    if (!menuButton || !menuNav) {
+      return;
+    }
+
+    function setOpenState(isOpen) {
+      menuNav.classList.toggle("is-open", isOpen);
+      document.body.classList.toggle("menu-open", isOpen);
+      menuButton.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    }
+
+    menuButton.addEventListener("click", function () {
+      setOpenState(!menuNav.classList.contains("is-open"));
+    });
+
+    menuNav.addEventListener("click", function (event) {
+      var clickedLink = event.target && event.target.closest("a");
+
+      if (clickedLink) {
+        setOpenState(false);
+      }
+    });
+
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 900 && menuNav.classList.contains("is-open")) {
+        setOpenState(false);
+      }
+    });
+  }
+
+  initArchiveMobileMenu();
+
   function formatStatValue(value, formatType) {
     if (formatType === "compact") {
       var numberValue = Number(value);

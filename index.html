@@ -4,13 +4,16 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>home | EMI Archive</title>
-  <link rel="stylesheet" href="assets/css/styles.css?v=2d22aa7" />
+  <link rel="stylesheet" href="assets/css/styles.css?v=lux-mobile-nav-1" />
 </head>
 <body class="home-page archive-home">
   <header class="archive-topbar" id="top">
     <div class="archive-shell archive-topbar__inner">
       <a class="archive-brand" href="index.html" aria-label="EMI Archive home">EMI ARCHIVE</a>
-      <nav class="archive-nav" aria-label="Main navigation">
+      <button class="archive-menu-btn" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="archive-main-nav">
+        <span>Menu</span>
+      </button>
+      <nav class="archive-nav" id="archive-main-nav" aria-label="Main navigation">
         <a class="archive-nav__link is-active" href="index.html">Home</a>
         <a class="archive-nav__link" href="pages/profile/index.html">Profile</a>
         <a class="archive-nav__link" href="pages/works/index.html">Works</a>
@@ -232,6 +235,75 @@
           <h3>The Evolution of Emi</h3>
           <p>From the beginning to becoming who she is today.</p>
         </article>
+
+        <section class="archive-rail-panel" aria-label="Editorial pillars">
+          <h3>Content Series (Editorial Pillars)</h3>
+          <div class="archive-pillar-grid">
+            <article class="archive-pillar-card">
+              <h4>Fashion Notes</h4>
+              <p>Analysis of style, brand collaborations, and visual storytelling.</p>
+              <div class="archive-pillar-card__image image-a"></div>
+            </article>
+            <article class="archive-pillar-card">
+              <h4>Behind the Moment</h4>
+              <p>The narrative behind major appearances and key projects.</p>
+              <div class="archive-pillar-card__image image-d"></div>
+            </article>
+            <article class="archive-pillar-card">
+              <h4>Archive File</h4>
+              <p>Milestones and important moments documented for future reference.</p>
+              <div class="archive-pillar-card__image image-b"></div>
+            </article>
+            <article class="archive-pillar-card">
+              <h4>Did You Know?</h4>
+              <p>Short editorial facts and quick highlights from the archive.</p>
+              <div class="archive-pillar-card__image image-c"></div>
+            </article>
+            <article class="archive-pillar-card">
+              <h4>Creative Growth</h4>
+              <p>Tracing the evolution in acting, music, style, and mindset.</p>
+              <div class="archive-pillar-card__image image-a"></div>
+            </article>
+          </div>
+        </section>
+
+        <section class="archive-rail-split" aria-label="Information blocks">
+          <article class="archive-info-block">
+            <h3>Key Pages &amp; Purpose</h3>
+            <ul>
+              <li><strong>Home</strong><span>Introduction to the journey, highlights, and latest stories.</span></li>
+              <li><strong>Profile</strong><span>Who Emi is, her values, and her creative philosophy.</span></li>
+              <li><strong>Works</strong><span>Complete overview of acting, music, and performances.</span></li>
+              <li><strong>Fashion</strong><span>A deep dive into the fashion journey and collaborations.</span></li>
+              <li><strong>Timeline</strong><span>A chronological journey of career milestones.</span></li>
+              <li><strong>Press</strong><span>Media coverage, interviews, and publications.</span></li>
+              <li><strong>Gallery</strong><span>Visual collection of photos across all moments.</span></li>
+              <li><strong>Contact</strong><span>Official contact and collaboration inquiries.</span></li>
+            </ul>
+          </article>
+
+          <article class="archive-info-block">
+            <h3>Design Tokens</h3>
+            <p class="archive-info-label">Color Palette</p>
+            <div class="archive-swatch-row" aria-hidden="true">
+              <span class="archive-swatch tone-ivory"></span>
+              <span class="archive-swatch tone-linen"></span>
+              <span class="archive-swatch tone-gold"></span>
+              <span class="archive-swatch tone-slate"></span>
+              <span class="archive-swatch tone-charcoal"></span>
+            </div>
+            <p class="archive-info-label">Typography</p>
+            <p class="archive-typo-sample">Playfair style headings with modern sans-serif body copy.</p>
+            <p class="archive-info-label">UI Style</p>
+            <div class="archive-chip-row">
+              <span>Minimal</span>
+              <span>Editorial</span>
+              <span>Elegant</span>
+              <span>Premium</span>
+              <span>Timeless</span>
+            </div>
+          </article>
+        </section>
       </aside>
     </div>
   </main>

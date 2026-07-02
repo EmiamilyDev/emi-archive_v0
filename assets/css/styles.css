@@ -268,7 +268,7 @@ a {
 }
 
 /* Home page layout */
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
 
 .home-page {
   margin: 0;
@@ -968,7 +968,7 @@ a {
   margin: 0;
   color: #23201c;
   background: #ede9e2;
-  font-family: "Manrope", "Segoe UI", sans-serif;
+  font-family: "Plus Jakarta Sans", "Segoe UI", sans-serif;
 }
 
 .archive-shell {
@@ -980,7 +980,7 @@ a {
   position: sticky;
   top: 0;
   z-index: 20;
-  background: rgba(240, 236, 229, 0.95);
+  background: rgba(244, 240, 234, 0.95);
   border-bottom: 1px solid #d8d0c2;
   backdrop-filter: blur(8px);
 }
@@ -997,8 +997,21 @@ a {
   text-decoration: none;
   color: #211d18;
   text-transform: uppercase;
-  letter-spacing: 0.18em;
-  font-size: 0.82rem;
+  letter-spacing: 0.2em;
+  font-size: 0.8rem;
+}
+
+.archive-menu-btn {
+  display: none;
+  min-height: 42px;
+  min-width: 42px;
+  padding: 0 12px;
+  border: 1px solid #d0c5b4;
+  background: linear-gradient(180deg, #f9f6f0, #ece5da);
+  color: #2f2a24;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.58rem;
 }
 
 .archive-nav {
@@ -1088,7 +1101,7 @@ a {
 .archive-metrics h3,
 .archive-footer__brand {
   margin: 0;
-  font-family: "Cormorant Garamond", Georgia, serif;
+  font-family: "Playfair Display", Georgia, serif;
   font-weight: 500;
   color: #1f1a15;
 }
@@ -1395,6 +1408,149 @@ a {
   line-height: 0.92;
 }
 
+.archive-rail-panel,
+.archive-rail-split {
+  border: 1px solid #d8d0c2;
+  background: #f5f1ea;
+  padding: 14px;
+}
+
+.archive-rail-panel h3,
+.archive-info-block h3 {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.82rem;
+}
+
+.archive-pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.archive-pillar-card {
+  border: 1px solid #ddd4c7;
+  background: #faf7f2;
+  padding: 8px;
+  display: grid;
+  gap: 6px;
+}
+
+.archive-pillar-card h4 {
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.09em;
+  font-size: 0.58rem;
+}
+
+.archive-pillar-card p {
+  margin: 0;
+  font-size: 0.64rem;
+  line-height: 1.5;
+  color: #5c5348;
+}
+
+.archive-pillar-card__image {
+  min-height: 90px;
+  background: #d2c7b8 url("../images/emi01.png") center / cover no-repeat;
+}
+
+.archive-rail-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.archive-info-block {
+  border: 1px solid #ded5c9;
+  background: #faf7f1;
+  padding: 12px;
+}
+
+.archive-info-block ul {
+  margin: 0;
+  padding-left: 16px;
+  display: grid;
+  gap: 8px;
+}
+
+.archive-info-block li {
+  color: #4f473e;
+  font-size: 0.66rem;
+  line-height: 1.5;
+}
+
+.archive-info-block li strong {
+  display: block;
+  color: #26221d;
+  font-size: 0.68rem;
+}
+
+.archive-info-block li span {
+  display: block;
+}
+
+.archive-info-label {
+  margin: 0 0 6px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.56rem;
+  color: #6f6558;
+}
+
+.archive-swatch-row {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 10px;
+}
+
+.archive-swatch {
+  aspect-ratio: 1;
+  border: 1px solid #d4cbbe;
+}
+
+.archive-swatch.tone-ivory {
+  background: #f2efe8;
+}
+
+.archive-swatch.tone-linen {
+  background: #e4ddd0;
+}
+
+.archive-swatch.tone-gold {
+  background: #c6aa79;
+}
+
+.archive-swatch.tone-slate {
+  background: #7a7a7a;
+}
+
+.archive-swatch.tone-charcoal {
+  background: #222;
+}
+
+.archive-typo-sample {
+  margin: 0 0 10px;
+  color: #4d453b;
+}
+
+.archive-chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.archive-chip-row span {
+  border: 1px solid #d8cfbf;
+  background: #f3eee6;
+  padding: 5px 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.53rem;
+}
+
 .archive-footer {
   margin-top: 18px;
   border-top: 1px solid #d8d0c2;
@@ -1504,6 +1660,10 @@ a {
   .archive-channels {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
+
+  .archive-pillar-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 900px) {
@@ -1512,26 +1672,53 @@ a {
   }
 
   .archive-topbar__inner {
-    min-height: auto;
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 14px 0;
+    min-height: 66px;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 0;
+    flex-wrap: wrap;
   }
 
   .archive-nav {
-    width: 100%;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    overflow-x: auto;
-    padding: 4px 0;
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 14px;
+    right: 14px;
+    border: 1px solid #d7cdbf;
+    background: #f6f2eb;
+    box-shadow: 0 16px 36px rgba(24, 20, 15, 0.15);
+    padding: 8px;
+    display: none;
+    grid-template-columns: 1fr;
+    gap: 6px;
+    overflow-y: auto;
+    max-height: 72vh;
+    z-index: 50;
+  }
+
+  .archive-nav.is-open {
+    display: grid;
+  }
+
+  .archive-home.menu-open {
+    overflow: hidden;
+  }
+
+  .archive-menu-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
   }
 
   .archive-nav__link {
-    border: 1px solid #d2c7b7;
-    border-radius: 999px;
-    padding: 8px 10px;
-    white-space: nowrap;
-    background: #f7f3ed;
+    border: 1px solid #ddd3c4;
+    border-radius: 0;
+    min-height: 42px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 10px;
+    background: #fbf8f3;
   }
 
   .archive-nav__link.is-active,
@@ -1554,6 +1741,11 @@ a {
     grid-template-columns: 1fr 1fr;
   }
 
+  .archive-pillar-grid,
+  .archive-rail-split {
+    grid-template-columns: 1fr 1fr;
+  }
+
   .archive-hero__image {
     min-height: 400px;
   }
@@ -1569,7 +1761,9 @@ a {
   .archive-metrics,
   .archive-channels,
   .archive-rail,
-  .archive-footer__top {
+  .archive-footer__top,
+  .archive-pillar-grid,
+  .archive-rail-split {
     grid-template-columns: 1fr;
   }
 
