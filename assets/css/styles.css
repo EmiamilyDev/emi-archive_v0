@@ -1823,11 +1823,16 @@ select {
   }
 
   .archive-block,
+  .archive-hero,
   .archive-rail-card,
   .hero,
   .page-panel,
   .card {
     border-radius: 16px;
+  }
+
+  .archive-hero {
+    overflow: hidden;
   }
 
   .archive-metrics article,
