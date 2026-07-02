@@ -1678,15 +1678,69 @@ a {
   }
 
   .archive-hero {
-    min-height: auto;
+    position: relative;
+    min-height: 88svh;
+    overflow: hidden;
+    background: #111318;
+  }
+
+  .archive-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background:
+      linear-gradient(98deg, rgba(10, 12, 18, 0.86) 0%, rgba(10, 12, 18, 0.68) 42%, rgba(10, 12, 18, 0.25) 78%),
+      linear-gradient(180deg, rgba(10, 12, 18, 0.28) 0%, rgba(10, 12, 18, 0) 45%, rgba(10, 12, 18, 0.42) 100%);
+  }
+
+  .archive-hero__content {
+    position: relative;
+    z-index: 2;
+    min-height: 88svh;
+    align-content: center;
+    gap: 14px;
+    padding: 22px 20px 28px;
+  }
+
+  .archive-hero .archive-label {
+    color: rgba(242, 238, 230, 0.92);
+    letter-spacing: 0.14em;
+  }
+
+  .archive-hero__title {
+    color: #f4efe8;
+    font-size: clamp(3.1rem, 13.8vw, 4.9rem);
+    line-height: 0.88;
+    max-width: 7ch;
+  }
+
+  .archive-hero__lead {
+    color: rgba(238, 233, 224, 0.94);
+    max-width: 20ch;
+    font-size: clamp(1.02rem, 4.5vw, 1.3rem);
+    line-height: 1.46;
+  }
+
+  .archive-hero .archive-btn {
+    margin-top: 8px;
+    padding: 12px 28px;
+    border-color: #dbc69e;
+    background: #e2d1af;
+    color: #1f1912;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
   }
 
   .archive-hero__image {
-    min-height: clamp(420px, 105vw, 560px);
-    background-size: contain;
+    position: absolute;
+    inset: 0;
+    min-height: 100%;
+    background-size: cover;
     background-repeat: no-repeat;
-    background-position: center top;
-    background-color: #ebe7df;
+    background-position: 64% center;
+    background-color: #25292f;
   }
 
   .archive-card__image,
@@ -1914,7 +1968,7 @@ select {
   }
 
   .archive-hero__image {
-    min-height: clamp(360px, 112vw, 500px);
+    background-position: 66% center;
   }
 }
 
