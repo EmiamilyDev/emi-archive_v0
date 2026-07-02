@@ -1108,44 +1108,47 @@ a {
 
 .archive-hero {
   display: grid;
-  grid-template-columns: minmax(300px, 0.95fr) minmax(0, 1.35fr);
-  min-height: 620px;
+  grid-template-columns: minmax(340px, 0.86fr) minmax(0, 1.14fr);
+  min-height: clamp(640px, 72vh, 760px);
+  background: linear-gradient(90deg, #f0ece4 0%, #f2eee7 56%, #f1ece3 100%);
 }
 
 .archive-hero__content {
-  padding: clamp(20px, 3vw, 42px);
+  padding: clamp(30px, 4vw, 58px);
   display: grid;
   align-content: center;
-  gap: 12px;
+  gap: 16px;
 }
 
 .archive-hero__title {
-  font-size: clamp(2.3rem, 6vw, 4.75rem);
-  line-height: 0.9;
+  font-size: clamp(3.1rem, 6.4vw, 5.5rem);
+  line-height: 0.94;
+  max-width: 8ch;
 }
 
 .archive-hero__lead {
   margin: 0;
-  max-width: 29ch;
-  line-height: 1.7;
+  max-width: 23ch;
+  line-height: 1.58;
+  font-size: clamp(1.06rem, 1.34vw, 1.42rem);
   color: #4b443a;
 }
 
 .archive-btn {
-  margin-top: 6px;
+  margin-top: 10px;
   width: fit-content;
   min-height: 40px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 10px 16px;
+  padding: 13px 24px;
   border: 1px solid #b89f75;
   background: #cab086;
   color: #231e18;
   text-decoration: none;
   text-transform: uppercase;
-  letter-spacing: 0.12em;
-  font-size: 0.64rem;
+  letter-spacing: 0.14em;
+  font-size: 0.7rem;
 }
 
 .archive-hero__image,
@@ -1158,8 +1161,8 @@ a {
 }
 
 .archive-hero__image {
-  min-height: 620px;
-  background-position: center 22%;
+  min-height: 640px;
+  background-position: 62% 18%;
 }
 
 .archive-block {
